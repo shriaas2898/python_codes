@@ -1,4 +1,6 @@
-.container{
+.logo{
   background-color: black;
   color: white;
+  text-align: center;
+  text-shadow: 2px rgba(255, 0, 0, 0.5);
 }
