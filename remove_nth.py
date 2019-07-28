@@ -10,17 +10,22 @@ without every nth character on each line.
 '''
 
 
+
 try:
+    #opening connection to file which user entered
     inp_file = open(input("Enter file name"))
     out_file = open("tempout.txt", "w")
-    size = int(input("Enter character number to skip"))
+    skip_char = int(input("Enter character number to skip"))
+
+    #reading file line by line
     for line in inp_file:
         start = 0
-        end = size - 1
+        end = skip_char - 1
+        #writing the contents to output file and skipping the nth character
         while (start <= len(line)):
             out_file.write(line[start:end])
             start = end + 1
-            end += size
+            end += skip_char
 
     inp_file.close()
     out_file.close()
