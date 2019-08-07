@@ -4,7 +4,7 @@
 Author: Aastha Shrivastava
 PRN: 19030142001
 Date modified: 27th JULY 2019
-
+               7th August 2019: added exception handling
 Description: Program reads file supplied by user, takes an intger value n from user and writes the file contents in new file
 without every nth character on each line.
 '''
@@ -27,9 +27,23 @@ try:
             start = end + 1
             end += skip_char
 
-    inp_file.close()
-    out_file.close()
+
+#possible exceptions program may encounter
 except FileNotFoundError:
     print("File not found please check the file name and try executing program again")
 except TypeError:
     print("Character number must be an integer please execute the program again and enter a valid value")
+except PermissionError:
+    print("Permission denied to read/write file")
+except FileExistsError:
+    print("tempout.txt already exists and cannot be overwritten")
+except IsADirectoryError:
+    print("Requested file is a directory")
+
+#closing the file
+finally:
+    try:
+        inp_file.close()
+        out_file.close()
+    except AttributeError:
+        pass
