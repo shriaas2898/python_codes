@@ -1,3 +1,12 @@
+#!/usr/bin/python3
+
+'''
+Author: Aastha Shrivastava
+PRN: 19030142001
+Date modified: 13th August 2019: Added documentation
+Description: Program  reads the contents of file 'tempfile.txt', takes user input for number of grams and print the ngrams for the filr
+'''
+
 inp_file = open("tempfile.txt")
 n = int(input("Enter number grams"))
 

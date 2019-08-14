@@ -1,5 +1,15 @@
+#!/usr/bin/python3
+
+'''
+Author: Aastha Shrivastava
+PRN: 19030142001
+Date modified: 13th August 2019: Added documentation
+Description: Program  takes function name from user, if it is a valid list method it executes it and display the result
+'''
+
 functions = dir(list)
 l = [1,2,4,1,2,5,7,84,25]
+print("Current List:"+str(l))
 func_name = input("Enter function's name")
 
 if func_name in functions:
