@@ -44,7 +44,7 @@ try:
 
     print("\nLast name greater the 4 charcter and 3rd character is between a and m")
     for person in persons:
-        if len(person.last_name)>3 and person.last_name[2]  in "abcdefghijklm":
+        if len(person.last_name)>3 and person.last_name[2].lower()  in "abcdefghijklm":
             print(person.show_details())
 
     print("\nPhone numbers first and last number is odd")
