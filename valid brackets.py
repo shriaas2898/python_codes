@@ -1,3 +1,4 @@
+'''program to validate brcakets in supplied string'''
 class Solution:
     def checkValidString(self, s: str) -> bool:
         stack = ['-']
