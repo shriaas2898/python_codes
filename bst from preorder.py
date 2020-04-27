@@ -6,6 +6,8 @@ class TreeNode:
         self.right = None
 
 class Solution:
+    '''Function to create binary search tree from its preorder of elements
+    '''
     def bstFromPreorder(self, preorder: List[int]) -> TreeNode:
         if len(preorder) == 0:
             return None
