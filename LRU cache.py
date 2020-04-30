@@ -1,3 +1,5 @@
+'''python implementation of 
+Least recently used algorithm'''
 class LRUCache:
 
     def __init__(self, capacity: int):
