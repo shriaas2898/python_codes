@@ -1,4 +1,4 @@
-'''python implementation of 
+'''Python implementation of 
 Least recently used algorithm'''
 class LRUCache:
 
