@@ -1,14 +1,17 @@
 '''Python implementation of 
 Least recently used algorithm'''
 class LRUCache:
-
+    #defining class variables
     def __init__(self, capacity: int):
         self.keys = []
         self.values = []
         self.access = []
         self.capacity = capacity
         self.access_count = 0
-    
+        
+        
+    '''Returns value of key supplied if key is present in cache
+        if key is not present returns -1'''
     def get(self, key: int) -> int:
         if key in self.keys:
             self.access[self.keys.index(key)] = self.access_count
