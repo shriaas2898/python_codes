@@ -1,11 +1,12 @@
 from tkinter import *
 from tkinter.colorchooser import askcolor
 
-
+#class paint
 class Paint(object):
     DEFAULT_PEN_SIZE = 0.5
     DEFAULT_COLOR = "black"
-
+    
+    #initializing buttons
     def __init__(self):
         self.root = Tk()
 
@@ -30,9 +31,11 @@ class Paint(object):
         self.setup()
         self.root.mainloop()
 
+    #Function is triggered when pen button is clicked.
     def use_pen(self):
         self.activate_button(self.pen_button)
-
+        
+    #Function is triggered when brush button is clicked.
     def use_brush(self):
         self.activate_button(self.brush_button)
 
