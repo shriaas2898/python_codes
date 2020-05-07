@@ -38,11 +38,13 @@ class Paint(object):
     #Function is triggered when brush button is clicked.
     def use_brush(self):
         self.activate_button(self.brush_button)
-
+        
+    #Lets user choose color from color palette
     def choose_color(self):
         self.eraser_on = False
         self.color = askcolor(color=self.color)[1]
 
+    #Function to activate eraser.    
     def use_eraser(self):
         self.activate_button(self.eraser_button, eraser_mode=True)
 
