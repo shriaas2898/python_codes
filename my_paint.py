@@ -48,7 +48,7 @@ class Paint(object):
     def use_eraser(self):
         self.activate_button(self.eraser_button, eraser_mode=True)
 
-
+    
     def setup(self):
         self.old_x = self.old_y = None
         self.line_width = self.DEFAULT_PEN_SIZE
@@ -57,14 +57,15 @@ class Paint(object):
         self.active_button = self.pen_button
         self.canvas.bind('<B1-Motion>', self.paint)
         self.canvas.bind('<ButtonRelease-1>',self.reset)
-
+    
+    #Funtion to activate the button which is clicked
     def activate_button(self, button,eraser_mode=False):
         self.active_button.config(relief=RAISED)
         button.config(relief=SUNKEN)
         self.active_button = button
         self.eraser_on = eraser_mode
 
-
+    #Function to paint on canvas with active brush/pen/eraser
     def paint(self,event):
         self.line_width = self.choose_size_button.get()
         print("LOG: line width ",self.line_width)
@@ -79,7 +80,8 @@ class Paint(object):
 
         self.old_x = event.x
         self.old_y = event.y
-
+    
+    
     def reset(self, event):
         print("LOG: Reset ")
 
