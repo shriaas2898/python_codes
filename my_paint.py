@@ -37,8 +37,8 @@ class Paint(object):
         
     #Function is triggered when brush button is clicked.
     def use_brush(self):
-        self.activate_button(self.brush_button)
-        
+        self.activate_button(self.brush_button,brush_mode=True)
+
     #Lets user choose color from color palette
     def choose_color(self):
         self.eraser_on = False
@@ -54,29 +54,32 @@ class Paint(object):
         self.line_width = self.DEFAULT_PEN_SIZE
         self.color = self.DEFAULT_COLOR
         self.eraser_on = False
+        self.brush_on = False
         self.active_button = self.pen_button
         self.canvas.bind('<B1-Motion>', self.paint)
         self.canvas.bind('<ButtonRelease-1>',self.reset)
     
     #Funtion to activate the button which is clicked
-    def activate_button(self, button,eraser_mode=False):
+    def activate_button(self, button,eraser_mode=False,brush_mode=False):
         self.active_button.config(relief=RAISED)
         button.config(relief=SUNKEN)
         self.active_button = button
         self.eraser_on = eraser_mode
+        self.brush_on = brush_mode
 
     #Function to paint on canvas with active brush/pen/eraser
     def paint(self,event):
         self.line_width = self.choose_size_button.get()
-        print("LOG: line width ",self.line_width)
-        print("LOG: eraser on ",self.eraser_on)
-        print("LOG: color ",self.color)
-        print("LOG: x1:", self.old_x, "y1:", self.old_y, "x2:", event.x, "y2:", event.y)
-        paint_color = 'white' if self.eraser_on else self.color
+          paint_color = 'white' if self.eraser_on else self.color
         if self.old_x and self.old_y:
-            self.canvas.create_line(self.old_x, self.old_y, event.x, event.y,
-                                    width=self.line_width, fill=paint_color,
-                                    capstyle=ROUND, smooth=True, splinesteps=36)
+            if self.brush_on:
+                self.canvas.create_line(self.old_x, self.old_y, event.x, event.y,
+                                        width=self.line_width, fill=paint_color,
+                                        capstyle=ROUND, smooth=True, splinesteps=36,stipple='gray25')
+            else:
+                self.canvas.create_line(self.old_x, self.old_y, event.x, event.y,
+                                        width=self.line_width, fill=paint_color,
+                                        capstyle=ROUND, smooth=True, splinesteps=36)
 
         self.old_x = event.x
         self.old_y = event.y
