@@ -1,3 +1,7 @@
+'''This program contains code to create paint like application.
+   The code is based on an article  "How to make paint in python" published on papaprogrammer.com
+   with some added features.
+'''
 from tkinter import *
 from tkinter.colorchooser import askcolor
 
