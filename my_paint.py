@@ -5,16 +5,19 @@
 from tkinter import *
 from tkinter.colorchooser import askcolor
 
-#class paint
+
+# class paint
 class Paint(object):
     DEFAULT_PEN_SIZE = 0.5
     DEFAULT_COLOR = "black"
-    
-    #initializing buttons
+
+    # initializing buttons
     def __init__(self):
         self.root = Tk()
-
-        self.pen_button = Button(self.root, text="pen", command=self.use_pen)
+        pen_image = PhotoImage(r'/home/shriaas/PycharmProjects/Desktop Apps/Icons/pen.svg').subsample(100,100)
+        self.pen_button = Button(self.root, text="pen",
+                                 image=pen_image,
+                                 command=self.use_pen)
         self.pen_button.grid(row=0, column=0)
 
         self.brush_button = Button(self.root, text="brush", command=self.use_brush)
@@ -35,24 +38,23 @@ class Paint(object):
         self.setup()
         self.root.mainloop()
 
-    #Function is triggered when pen button is clicked.
+    # Function is triggered when pen button is clicked.
     def use_pen(self):
         self.activate_button(self.pen_button)
-        
-    #Function is triggered when brush button is clicked.
-    def use_brush(self):
-        self.activate_button(self.brush_button,brush_mode=True)
 
-    #Lets user choose color from color palette
+    # Function is triggered when brush button is clicked.
+    def use_brush(self):
+        self.activate_button(self.brush_button, brush_mode=True)
+
+    # Lets user choose color from color palette
     def choose_color(self):
         self.eraser_on = False
         self.color = askcolor(color=self.color)[1]
 
-    #Function to activate eraser.    
+    # Function to activate eraser.
     def use_eraser(self):
         self.activate_button(self.eraser_button, eraser_mode=True)
 
-    
     def setup(self):
         self.old_x = self.old_y = None
         self.line_width = self.DEFAULT_PEN_SIZE
@@ -61,25 +63,26 @@ class Paint(object):
         self.brush_on = False
         self.active_button = self.pen_button
         self.canvas.bind('<B1-Motion>', self.paint)
-        self.canvas.bind('<ButtonRelease-1>',self.reset)
-    
-    #Funtion to activate the button which is clicked
-    def activate_button(self, button,eraser_mode=False,brush_mode=False):
+        self.canvas.bind('<ButtonRelease-1>', self.reset)
+
+    # Funtion to activate the button which is clicked
+    def activate_button(self, button, eraser_mode=False, brush_mode=False):
         self.active_button.config(relief=RAISED)
         button.config(relief=SUNKEN)
         self.active_button = button
         self.eraser_on = eraser_mode
         self.brush_on = brush_mode
 
-    #Function to paint on canvas with active brush/pen/eraser
-    def paint(self,event):
+    # Function to paint on canvas with active brush/pen/eraser
+    def paint(self, event):
         self.line_width = self.choose_size_button.get()
-          paint_color = 'white' if self.eraser_on else self.color
+        paint_color = 'white' if self.eraser_on else self.color
+
         if self.old_x and self.old_y:
             if self.brush_on:
                 self.canvas.create_line(self.old_x, self.old_y, event.x, event.y,
                                         width=self.line_width, fill=paint_color,
-                                        capstyle=ROUND, smooth=True, splinesteps=36,stipple='gray25')
+                                        capstyle=ROUND, smooth=True, splinesteps=36, stipple='gray25')
             else:
                 self.canvas.create_line(self.old_x, self.old_y, event.x, event.y,
                                         width=self.line_width, fill=paint_color,
@@ -87,16 +90,13 @@ class Paint(object):
 
         self.old_x = event.x
         self.old_y = event.y
-    
-    
+
     def reset(self, event):
         print("LOG: Reset ")
 
-        self.old_x =  self.old_y = None
+        self.old_x = self.old_y = None
 
 
 if __name__ == '__main__':
     Paint()
-
-
 
