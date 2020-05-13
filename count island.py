@@ -1,3 +1,5 @@
+'''Assuming supplied matrix is a map where '1' = land and '0' = water
+    count the number of islands'''
 class Solution:
     def matrix(string_mat):
         string_mat = string_mat.strip('[')
