@@ -1,3 +1,4 @@
+# A simple hangman game written in python
 import random
 print("Welcome to HangMan")
 word_list = ["Youva","Jupyter","Speed","Function"]
