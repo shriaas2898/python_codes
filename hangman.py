@@ -1,7 +1,9 @@
 # A simple hangman game written in python
 import random
 print("Welcome to HangMan")
+#List of words
 word_list = ["Youva","Jupyter","Speed","Function"]
+# Choosing a random word from the list
 word = list(random.choice(word_list))
 guess_word = ['*']*len(word)
 guess_count = len(word)+2
