@@ -8,6 +8,7 @@ word = list(random.choice(word_list))
 guess_word = ['*']*len(word)
 guess_count = len(word)+2
 score = 0
+# Running game loop till user guesses the correct word or run out of guesses
 while(('*' in guess_word) and guess_count>0):
     print("Word:%s \tscore:%d \tguesses left:%d"%(''.join(guess_word),score,guess_count))
     letter = input("Enter next character:")
