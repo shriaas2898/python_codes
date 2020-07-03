@@ -1,3 +1,6 @@
+''' 
+Python program to download comics from xkcd using beautiful soup module.
+'''
 import bs4, requests,os
 
 def download_image(url):
