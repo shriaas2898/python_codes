@@ -1,3 +1,7 @@
+'''
+Description: Program to display a simple slideshow using Tkinter.
+'''
+
 from tkinter import *
 import time
 
