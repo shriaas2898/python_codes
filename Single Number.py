@@ -1,4 +1,4 @@
-
+#Problem Statement: a list contains all number two times except one find the unique number
 '''
 function returns the only unique number present in the nums list
 '''
